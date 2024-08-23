@@ -1,8 +1,18 @@
-import { Resolver, Query, Mutation, Args, Context } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Context,
+  Int,
+  Info,
+  //   GraphQLResolveInfo,
+} from '@nestjs/graphql';
+import { GraphQLResolveInfo } from 'graphql';
 import { UserServiceService } from './user.service';
 import { User } from './user.entity';
 import { CreateUserInput } from './dto/createuser-input';
-import { Int } from '@nestjs/graphql';
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
 @Resolver()
 export class UsersResolver {
@@ -10,13 +20,11 @@ export class UsersResolver {
 
   @Query((returns) => [User])
   users(
-    @Context() ctx: any,
+    @Info() info: string[],
     @Args('limit', { type: () => Int }) limit: number,
     @Args('username', { nullable: true }) username?: string,
   ): Promise<User[]> {
-    // throw new Error('');
-
-    return this.userService.getUsers(ctx, limit, username);
+    return this.userService.getUsers(info, limit, username);
   }
   @Query((returns) => User)
   getUser(@Args('id', { type: () => Int }) id: number): Promise<User> {

@@ -12,6 +12,10 @@ export class User {
   @Field()
   username: string;
 
+  @Column({ nullable: true })
+  @Field()
+  vta: string;
+
   @Column()
   @Field()
   email: string;

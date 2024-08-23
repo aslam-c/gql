@@ -28,7 +28,7 @@ type Query {
   getUser(id: Int!): User!
   owner(id: Int!): Owner!
   owners: [Owner!]!
-  users: [User!]!
+  users(limit: Int!, username: String): [User!]!
 }
 
 input UpdateOwnerInput {
@@ -42,4 +42,5 @@ type User {
   id: Int!
   is_active: Boolean
   username: String!
+  vta: String!
 }

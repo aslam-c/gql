@@ -27,7 +27,7 @@ import { OwnersModule } from './owners/owners.module';
       database: 'app_db', // Database name
       // database: 'memory',
       entities: ['dist/**/*.entity{.ts,.js}'],
-      logging: true,
+      // logging: true,
       synchronize: true,
     }),
 

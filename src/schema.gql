@@ -2,18 +2,39 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateOwnerInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 input CreateUserInput {
   email: String!
   username: String!
 }
 
 type Mutation {
+  createOwner(createOwnerInput: CreateOwnerInput!): Owner!
   createUser(Input: CreateUserInput!): User!
+  removeOwner(id: Int!): Owner!
+  updateOwner(updateOwnerInput: UpdateOwnerInput!): Owner!
+}
+
+type Owner {
+  """Example field (placeholder)"""
+  exampleField: Int!
 }
 
 type Query {
   getUser(id: Int!): User!
+  owner(id: Int!): Owner!
+  owners: [Owner!]!
   users: [User!]!
+}
+
+input UpdateOwnerInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
 
 type User {

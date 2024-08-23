@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { UserServiceService } from './users/user.service';
 import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { OwnersModule } from './owners/owners.module';
 
 @Module({
   imports: [
@@ -26,10 +27,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: 'app_db', // Database name
       // database: 'memory',
       entities: ['dist/**/*.entity{.ts,.js}'],
+      logging: true,
       synchronize: true,
     }),
 
     UsersModule,
+
+    OwnersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

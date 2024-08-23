@@ -1,5 +1,12 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Pet } from 'src/pets/entities/pet.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -23,4 +30,7 @@ export class User {
   @Column({ default: true })
   @Field((type) => Boolean, { nullable: true, defaultValue: true })
   is_active?: boolean;
+
+  @OneToOne(() => Pet, (pet) => pet.user)
+  pet: Pet;
 }

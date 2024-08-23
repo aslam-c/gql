@@ -7,6 +7,11 @@ input CreateOwnerInput {
   exampleField: Int!
 }
 
+input CreatePetInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 input CreateUserInput {
   email: String!
   username: String!
@@ -14,9 +19,12 @@ input CreateUserInput {
 
 type Mutation {
   createOwner(createOwnerInput: CreateOwnerInput!): Owner!
+  createPet(createPetInput: CreatePetInput!): Pet!
   createUser(Input: CreateUserInput!): User!
   removeOwner(id: Int!): Owner!
+  removePet(id: Int!): Pet!
   updateOwner(updateOwnerInput: UpdateOwnerInput!): Owner!
+  updatePet(updatePetInput: UpdatePetInput!): Pet!
 }
 
 type Owner {
@@ -24,14 +32,30 @@ type Owner {
   exampleField: Int!
 }
 
+type Pet {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String!
+  user: User!
+  userId: Int!
+}
+
 type Query {
   getUser(id: Int!): User!
   owner(id: Int!): Owner!
   owners: [Owner!]!
+  pet(id: Int!): Pet!
+  pets: [Pet!]!
   users(limit: Int!, username: String): [User!]!
 }
 
 input UpdateOwnerInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input UpdatePetInput {
   """Example field (placeholder)"""
   exampleField: Int
   id: Int!

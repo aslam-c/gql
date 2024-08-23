@@ -6,6 +6,8 @@ import {
   Context,
   Int,
   Info,
+  ResolveField,
+  Parent,
   //   GraphQLResolveInfo,
 } from '@nestjs/graphql';
 import { GraphQLResolveInfo } from 'graphql';
